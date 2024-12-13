@@ -1,0 +1,170 @@
+# Object-Oriented Programming Project Documentation
+
+## **1. Introduction**
+This project implements a banking system using Object-Oriented Programming (OOP) principles in C++. It demonstrates key OOP concepts such as Encapsulation, Inheritance, Polymorphism, and Abstraction, as outlined in the assignment.
+
+The system includes functionalities for account management, including opening accounts, depositing money, withdrawing money, and fetching account details. Additionally, it incorporates exception handling and file I/O to ensure robustness and data persistence.
+
+---
+
+## **2. Project Overview**
+
+### **Objective**
+To design and implement a banking system in C++ that utilizes OOP concepts to manage accounts efficiently.
+
+### **Core Features**
+- **Encapsulation**: Private and protected members ensure data security.
+- **Inheritance**: A base class `Account` is extended by `Bank`, with further specialization in `SavingsAccount` and `CurrentAccount`.
+- **Polymorphism**: Virtual methods allow method overriding for tailored behavior in derived classes.
+- **Abstraction**: Abstract class `Account` defines the blueprint for all accounts.
+- **File I/O**: Data is stored and retrieved using `fstream`.
+- **Exception Handling**: Ensures robustness by handling runtime errors.
+
+---
+
+## **3. Class Design**
+
+### **Base Class: `Account`**
+- **Purpose**: Serves as an abstract class defining a common interface for accounts.
+- **Key Members**:
+  - Protected: `name`, `address`, `pin`, `balance`, `account_number`
+  - Pure Virtual Methods: `open_account`, `deposit_money`, `withdraw_money`, `display_account_info`
+
+### **Derived Class: `Bank`**
+- **Purpose**: Implements common account operations and data storage.
+- **Key Methods**:
+  - `open_account`: Initializes account details and stores data in a file.
+  - `deposit_money`: Adds specified amount to the balance.
+  - `withdraw_money`: Deducts specified amount if balance is sufficient.
+  - `display_account_info`: Displays account details.
+- **File I/O**:
+  - Writes and retrieves account data from `accounts.txt`.
+
+### **Specialized Classes**
+1. **`SavingsAccount`**:
+   - Inherits from `Bank`.
+   - Overrides `display_account_info` to indicate account type.
+2. **`CurrentAccount`**:
+   - Inherits from `Bank`.
+   - Overrides `display_account_info` to indicate account type.
+
+---
+
+## **4. Functional Requirements**
+
+### **Features Implemented**
+1. **Encapsulation**: Data members are private/protected; access is via public methods.
+2. **Inheritance**: Base class `Account`, derived classes `Bank`, `SavingsAccount`, and `CurrentAccount`.
+3. **Polymorphism**: Virtual methods (`display_account_info`) are overridden in derived classes.
+4. **Abstraction**: Abstract class `Account` defines the structure for all accounts.
+5. **File I/O**: Uses `fstream` to store and retrieve account details.
+6. **Exception Handling**: Manages errors like invalid inputs and file access issues.
+
+---
+
+## **5. Code Walkthrough**
+
+### **Main Workflow**
+1. **Menu Options**:
+   - Open Account
+   - Deposit Money
+   - Withdraw Money
+   - Fetch Account Info
+   - Exit
+2. **Account Type Selection**:
+   - Savings
+   - Current
+3. **Account Operations**:
+   - Prompt the user for input (e.g., account number, deposit amount).
+   - Perform requested operations and display results.
+
+### **Key Code Snippets**
+
+#### **File I/O for Account Storage**
+```cpp
+void store_account_data() {
+    ofstream file("accounts.txt", ios::app);
+    if (!file) throw runtime_error("Failed to open accounts file.");
+
+    file << "Account Number: " << account_number << "\n";
+    file << "Name: " << name << "\n";
+    file << "Address: " << address << "\n";
+    file << "Account Type: " << (account_type == 's' ? "Saving" : "Current") << "\n";
+    file << "Balance: " << balance << "\n";
+    file.close();
+}
+```
+**Explanation**: This method writes account data to a file, ensuring persistent storage.
+
+#### **Exception Handling**
+```cpp
+try {
+    account->withdraw_money();
+} catch (const exception& e) {
+    cout << "Error: " << e.what() << endl;
+}
+```
+**Explanation**: Ensures that invalid operations, such as withdrawing more than the balance, are handled gracefully.
+
+#### **Polymorphism**
+```cpp
+class Account {
+    virtual void display_account_info() const = 0; // Pure virtual
+};
+
+class SavingsAccount : public Bank {
+    void display_account_info() const override {
+        cout << "[Savings Account]\n";
+        Bank::display_account_info();
+    }
+};
+```
+**Explanation**: `display_account_info` is overridden to include specific account type details.
+
+---
+
+## **6. User Guide for Presentation**
+
+### **How to Run the Program**
+1. **Compile the Code**:
+   - Use a C++11 or higher compiler (e.g., GCC or Visual Studio).
+   - Command: `g++ main.cpp Bank.cpp SavingsAccount.cpp CurrentAccount.cpp -o bank_system`
+2. **Execute**:
+   - Run the compiled program: `./bank_system`
+3. **Interact with the Menu**:
+   - Choose operations based on the displayed options.
+
+### **Demonstration Flow**
+1. **Opening an Account**:
+   - Choose account type (Savings or Current).
+   - Provide necessary details (name, address, deposit amount, PIN).
+   - Note the generated account number.
+2. **Depositing Money**:
+   - Input account number and deposit amount.
+   - Observe the updated balance.
+3. **Withdrawing Money**:
+   - Input account number and withdrawal amount.
+   - Ensure balance sufficiency.
+4. **Fetching Account Info**:
+   - Input account number to display details.
+
+### **Highlighting OOP Principles**
+- **Encapsulation**: Emphasize data security and controlled access.
+- **Inheritance and Polymorphism**: Showcase specialized behavior for Savings and Current accounts.
+- **File I/O and Exception Handling**: Demonstrate robust error management and data persistence.
+
+---
+
+## **7. Testing and Validation**
+- **Unit Testing**:
+  - Test individual methods for correct behavior (e.g., `deposit_money`, `withdraw_money`).
+- **Integration Testing**:
+  - Validate seamless interaction between modules (e.g., menu and account classes).
+- **Error Scenarios**:
+  - Attempt invalid inputs (e.g., negative deposit) to test exception handling.
+
+---
+
+## **8. Conclusion**
+This project successfully demonstrates the application of OOP principles to design a modular, robust banking system. The code structure, exception handling, and adherence to OOP concepts ensure that the program is efficient, extensible, and user-friendly.
+
