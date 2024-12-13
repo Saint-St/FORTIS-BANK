@@ -60,8 +60,9 @@ Upon running the program, you will be presented with several options to choose f
 - **Multi-user support**: Currently supports a single user; multi-user functionality will be added in future versions. 🧑‍🤝‍🧑
 - **Improved error handling**: More robust error checking and feedback will be included in upcoming releases. ⚠️
 
-## File Structure 📁
-
+1. File Structure
+plaintext
+Copy code
 BankSystem/
 ├── main.cpp            // Contains the main logic and menu
 ├── Bank.h              // Bank class header
