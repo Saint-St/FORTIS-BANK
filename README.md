@@ -62,12 +62,14 @@ Upon running the program, you will be presented with several options to choose f
 
 ## File Structure 📁
 
-```
-banking-system/
-├── accounts.txt          # Stores account information 💾
-├── main.cpp              # Main program file 📝
-└── README.md             # Project documentation 📚
-```
+BankSystem/
+├── main.cpp            // Contains the main logic and menu
+├── Bank.h              // Bank class header
+├── Bank.cpp            // Bank class implementation
+├── AccountUtils.h      // Utility functions header (e.g., file operations)
+├── AccountUtils.cpp    // Utility functions implementation
+└── CMakeLists.txt      // (Optional) Build configuration for CMake
+
 
 ## Contributing 🤝
 
