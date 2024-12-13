@@ -1,0 +1,156 @@
+Here is the generated documentation for the **Fortis Bank System**:
+
+---
+
+## **Fortis Bank System Documentation**
+
+### **Overview**
+The Fortis Bank system is a console-based banking system that allows users to open accounts, deposit money, withdraw money, and fetch account information. The system uses a text file (`accounts.txt`) to store all account data persistently. Even if the system is recompiled, the data remains intact and can be retrieved using the account number.
+
+---
+
+### **System Features**
+
+1. **Open Account**:  
+   - Allows users to create a new bank account by entering their personal details, account type, and initial deposit.
+   - A random 16-digit account number is generated for each new account.
+   - A PIN is created by the user for account security.
+   - Account information is stored in the `accounts.txt` file.
+
+2. **Deposit Money**:  
+   - Users can deposit money into their account.
+   - The system asks for the account number and updates the balance accordingly.
+   - The updated balance is saved back into `accounts.txt`.
+
+3. **Withdraw Money**:  
+   - Users can withdraw money from their account.
+   - The system checks if the balance is sufficient and updates the balance accordingly.
+   - If there are insufficient funds, the withdrawal is not processed.
+
+4. **Fetch Account Information**:  
+   - Users can view their account details (name, address, account type, balance, and PIN) by entering the account number.
+   - The system retrieves and displays the account information from `accounts.txt`.
+
+---
+
+### **System Architecture**
+
+The system is built using object-oriented principles, with the `Bank` class handling all the functionality related to account management. The key components of the system are as follows:
+
+1. **`Bank` Class**:
+   - **Attributes**:  
+     - `name`: Stores the name of the account holder.
+     - `address`: Stores the address of the account holder.
+     - `account_type`: Stores the type of the account (either savings or current).
+     - `balance`: Stores the current balance of the account.
+     - `pin`: Stores the PIN for the account.
+     - `account_number`: Stores the unique 16-digit account number.
+
+2. **Methods**:
+   - **`open_account()`**: Prompts the user to enter details and creates a new account with a randomly generated 16-digit account number.
+   - **`deposit_money()`**: Prompts the user for the account number and amount to deposit, then updates the account balance.
+   - **`withdraw_money()`**: Prompts the user for the account number and amount to withdraw, then updates the account balance if sufficient funds are available.
+   - **`fetch_account_info()`**: Retrieves and displays the account information based on the provided account number.
+   - **`generate_account_number()`**: Generates a random 16-digit account number.
+   - **`store_account_data()`**: Saves the account details into `accounts.txt`.
+   - **`account_exists()`**: Checks whether an account exists in `accounts.txt` by searching for the account number.
+   - **`get_account_balance()`**: Retrieves the balance of an account based on the account number.
+   - **`update_account_balance()`**: Updates the balance for a given account number.
+
+---
+
+### **How It Works**
+
+1. **Account Creation**:
+   - The system prompts the user to input personal details (name, address), select an account type (savings or current), and deposit an initial amount.
+   - The system generates a random 16-digit account number and stores all the account information, including the PIN, into the `accounts.txt` file.
+
+2. **Depositing Money**:
+   - The user is prompted to enter their account number and the amount to deposit.
+   - The system verifies if the account exists and retrieves the current balance.
+   - The new balance is calculated and updated in the `accounts.txt` file.
+
+3. **Withdrawing Money**:
+   - The user is prompted to enter their account number and the amount to withdraw.
+   - The system checks if the account exists and if there are sufficient funds.
+   - The balance is updated in the `accounts.txt` file if the withdrawal is successful.
+
+4. **Fetching Account Information**:
+   - The user can enter their account number to fetch account details such as name, address, account type, balance, and PIN.
+   - The system retrieves this information from the `accounts.txt` file and displays it to the user.
+
+---
+
+### **File Storage Format (`accounts.txt`)**
+
+The system uses a text file named `accounts.txt` to persist account information. Each account is saved in a structured format:
+
+```
+Account Number: 1234567890123456
+Name: John Doe
+Address: 123 Main St, City
+Account Type: Saving
+Balance: 1000
+PIN: 1234
+------------------------------------
+```
+
+Each account's information is separated by a line of dashes (`------------------------------------`).
+
+---
+
+### **Main Menu**
+
+Upon running the program, the following options are presented to the user:
+
+1. **Open Account**:  
+   Allows the user to create a new bank account.
+
+2. **Deposit Money**:  
+   Allows the user to deposit money into their account.
+
+3. **Withdraw Money**:  
+   Allows the user to withdraw money from their account.
+
+4. **Fetch Account Info**:  
+   Allows the user to retrieve and view their account information by entering the account number.
+
+5. **Exit**:  
+   Exits the program.
+
+---
+
+### **Data Flow Diagram**
+
+1. **User Input**:  
+   The user provides their account number and other details through the console interface.
+   
+2. **Account Data Management**:  
+   The system verifies and updates the account data stored in the `accounts.txt` file. If a user creates an account, their data is appended to the file. Deposits and withdrawals modify the balance, and account details can be fetched by entering the account number.
+
+3. **Persistence**:  
+   All account data, including balances and PINs, is stored persistently in the `accounts.txt` file. The system does not lose this data even if the program is restarted or recompiled.
+
+---
+
+### **Limitations and Future Enhancements**
+
+1. **Security**:  
+   The system stores the PIN in plaintext in the `accounts.txt` file, which poses a security risk. This can be enhanced by implementing encryption for storing sensitive information like the PIN.
+
+2. **Account Deletion**:  
+   The system does not currently support account deletion. This can be added in future versions by adding a method to remove an account from the file.
+
+3. **Error Handling**:  
+   Basic error handling has been implemented, but more comprehensive checks and exception handling can be added for robustness.
+
+4. **User Interface**:  
+   The system currently uses a simple text-based interface. A graphical user interface (GUI) could be implemented in future versions to improve user experience.
+
+---
+
+### **Conclusion**
+
+The Fortis Bank System is a simple yet functional banking application that allows users to manage their accounts using a text-based interface. With features like account creation, deposits, withdrawals, and account information retrieval, the system provides a foundation for managing user accounts in a persistent manner using a text file. Enhancements such as encryption, error handling, and a GUI can further improve the system in future versions.
+
+---

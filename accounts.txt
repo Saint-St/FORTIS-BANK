@@ -1,0 +1,16 @@
+Account Number: 692076357578452
+Balance: 3800
+Name: saint codes
+Address: 123 fuck off
+Account Type: Saving
+Balance: 4000
+PIN: 2345
+------------------------------------
+Account Number: 3605818902185305
+Balance: 34000
+Name: enda
+Address: huku23
+Account Type: Saving
+Balance: 4000
+PIN: 1234
+------------------------------------
